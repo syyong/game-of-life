@@ -15,8 +15,22 @@ def random_cell_state():
 def random_state(width,height):
     return [[random_cell_state() for _ in range(width)] for _ in range(height)]
 
+def render(state):
+    top_border = '-' * (len(state[0]) + 2)
+    side_border = '|'
+    print(top_border)
+    for i in state:
+        line = []
+        for j in i:
+            if j ==1:
+                line.append('#')
+            else:
+                line.append(' ')
+        output = [side_border] + line + [side_border]
+        print(''.join(output))
+    print(top_border)
 
 if __name__ == '__main__':
-    width = 5
-    height = 5
-    print(random_state(width, height))
+    render(random_state(5, 5))
+    render(dead_state(5, 5))
+
