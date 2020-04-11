@@ -1,2 +1,4 @@
 # Pycharm ide
 .idea/
+# Virtual env
+venv/
