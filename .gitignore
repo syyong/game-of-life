@@ -2,3 +2,6 @@
 .idea/
 # Virtual env
 venv/
+# Python cache directory
+__pycache__/
+
