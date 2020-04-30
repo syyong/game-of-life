@@ -36,9 +36,9 @@ def render(state):
     """
     :param state: a matrix of cell states
     """
-    top_border = '-' * (len(state[0]) + 2)
+    border = '-' * (len(state[0]))
     side_border = '|'
-    print(top_border)
+    print(f'sy{border}')
     for i in state:
         line = []
         for j in i:
@@ -48,7 +48,7 @@ def render(state):
                 line.append(' ')
         output = [side_border] + line + [side_border]
         print(''.join(output))
-    print(top_border)
+    print(f'  {border}')
 
 
 def next_board_state(current_state):
