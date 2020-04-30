@@ -1,4 +1,6 @@
 # game-of-life
+![My version of game of life](https://github.com/syyong/game-of-life/blob/master/sy-game-of-life.gif)
+
 This is the first project that I worked on from https://robertheaton.com
 
 Here are the instructions if you want to try it out:
