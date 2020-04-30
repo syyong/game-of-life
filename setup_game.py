@@ -1,4 +1,5 @@
 import random
+import time
 
 
 def dead_state(width, height):
@@ -38,8 +39,8 @@ def render(state):
     for i in state:
         line = []
         for j in i:
-            if j ==1:
-                line.append('#')
+            if j == 1:
+                line.append('*')
             else:
                 line.append(' ')
         output = [side_border] + line + [side_border]
@@ -140,20 +141,25 @@ def next_board_state(current_state):
             else:
                 if sum_neighbour == 3:
                     next_state[y][x] = 1
-            # print(f"current: {current_state[y][x]}")
-            # print(f"next: {next_state[y][x]}")
-            # print(f"sum of neighbours is {sum_neighbour}")
-            # print(cell_states)
-            # print('*' * 30)
     return next_state
 
 if __name__ == '__main__':
-    # render(random_state(5, 5))
-    # render(dead_state(5, 5))
-    next_state = [
-        [1, 1, 1],
-        [0, 1, 1],
-        [0, 0, 0],
-    ]
-    next_board_state(next_state)
+    width = input('Please specify the width of your game of life: ')
+    height = input('Please specify the height of your game of life: ')
+    print(f'The size of your game of life is {width} x {height}. Enjoy')
+    time.sleep(1)
 
+    if not width:
+        width = 3
+    if not height:
+        height = 3
+
+    current_state = random_state(int(width), int(height))
+
+    try:
+        while True:
+            render(current_state)
+            time.sleep(0.5)
+            current_state = next_board_state(current_state)
+    except KeyboardInterrupt:
+        print('Thanks for playing!')
