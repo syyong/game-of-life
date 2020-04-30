@@ -10,6 +10,7 @@ def dead_state(width, height):
     """
     return ([[0 for _ in range(width)] for _ in range(height)])
 
+
 def random_cell_state():
     """
     :return: cell_state: int
@@ -21,13 +22,15 @@ def random_cell_state():
         cell_state = 1
     return cell_state
 
-def random_state(width,height):
+
+def random_state(width, height):
     """
     :param width: int
     :param height: int
     :return: a matrix of random state
     """
     return [[random_cell_state() for _ in range(width)] for _ in range(height)]
+
 
 def render(state):
     """
@@ -46,6 +49,7 @@ def render(state):
         output = [side_border] + line + [side_border]
         print(''.join(output))
     print(top_border)
+
 
 def next_board_state(current_state):
     """
@@ -142,6 +146,7 @@ def next_board_state(current_state):
                 if sum_neighbour == 3:
                     next_state[y][x] = 1
     return next_state
+
 
 if __name__ == '__main__':
     width = input('Please specify the width of your game of life: ')
