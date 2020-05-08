@@ -1,5 +1,6 @@
 import random
 import time
+from pprint import pprint
 
 
 def dead_state(width, height):
@@ -148,23 +149,37 @@ def next_board_state(current_state):
     return next_state
 
 
+def load_board_state(file_name):
+    board_state = []
+
+    with open(file_name, 'r') as src:
+        board_state = [
+            [int(i) for i in line.strip()]
+            for line in src
+            ]
+    return board_state
+
+
 if __name__ == '__main__':
-    width = input('Please specify the width of your game of life: ')
-    height = input('Please specify the height of your game of life: ')
-    print(f'The size of your game of life is {width} x {height}. Enjoy')
-    time.sleep(1)
+    # width = input('Please specify the width of your game of life: ')
+    # height = input('Please specify the height of your game of life: ')
+    # print(f'The size of your game of life is {width} x {height}. Enjoy')
+    # time.sleep(1)
+    #
+    # if not width:
+    #     width = 3
+    # if not height:
+    #     height = 3
+    #
+    # current_state = random_state(int(width), int(height))
 
-    if not width:
-        width = 3
-    if not height:
-        height = 3
+    current_state = load_board_state('./toad.txt')
+    pprint(current_state)
 
-    current_state = random_state(int(width), int(height))
-
-    try:
-        while True:
-            render(current_state)
-            time.sleep(0.5)
-            current_state = next_board_state(current_state)
-    except KeyboardInterrupt:
-        print('Thanks for playing!')
+    # try:
+    #     while True:
+    #         render(current_state)
+    #         time.sleep(0.5)
+    #         current_state = next_board_state(current_state)
+    # except KeyboardInterrupt:
+    #     print('Thanks for playing!')
