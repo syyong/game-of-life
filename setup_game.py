@@ -150,8 +150,6 @@ def next_board_state(current_state):
 
 
 def load_board_state(file_name):
-    board_state = []
-
     with open(file_name, 'r') as src:
         board_state = [
             [int(i) for i in line.strip()]
@@ -159,6 +157,15 @@ def load_board_state(file_name):
             ]
     return board_state
 
+
+def run(current_state):
+    try:
+        while True:
+            render(current_state)
+            time.sleep(0.5)
+            current_state = next_board_state(current_state)
+    except KeyboardInterrupt:
+        print('Thanks for playing!')
 
 if __name__ == '__main__':
     # width = input('Please specify the width of your game of life: ')
@@ -174,12 +181,5 @@ if __name__ == '__main__':
     # current_state = random_state(int(width), int(height))
 
     current_state = load_board_state('./toad.txt')
-    pprint(current_state)
+    run(current_state)
 
-    # try:
-    #     while True:
-    #         render(current_state)
-    #         time.sleep(0.5)
-    #         current_state = next_board_state(current_state)
-    # except KeyboardInterrupt:
-    #     print('Thanks for playing!')
