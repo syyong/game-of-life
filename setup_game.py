@@ -168,18 +168,16 @@ def run(current_state):
         print('Thanks for playing!')
 
 if __name__ == '__main__':
-    # width = input('Please specify the width of your game of life: ')
-    # height = input('Please specify the height of your game of life: ')
-    # print(f'The size of your game of life is {width} x {height}. Enjoy')
-    # time.sleep(1)
-    #
-    # if not width:
-    #     width = 3
-    # if not height:
-    #     height = 3
-    #
-    # current_state = random_state(int(width), int(height))
+    width = input('Please specify the width of your game of life: ')
+    height = input('Please specify the height of your game of life: ')
+    print(f'The size of your game of life is {width} x {height}. Enjoy')
+    time.sleep(1)
 
-    current_state = load_board_state('./toad.txt')
+    if not width:
+        width = 3
+    if not height:
+        height = 3
+
+    current_state = random_state(int(width), int(height))
+
     run(current_state)
-
