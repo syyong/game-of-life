@@ -1,6 +1,5 @@
 import random
 import time
-from pprint import pprint
 
 
 def dead_state(width, height):
@@ -167,23 +166,25 @@ def run(current_state):
     :param current_state: a matrix of cell states
     """
     try:
+        print('Press Ctrl + c to end game. Enjoy!\n')
+        time.sleep(3)
         while True:
             render(current_state)
             time.sleep(0.5)
             current_state = next_board_state(current_state)
     except KeyboardInterrupt:
-        print('Thanks for playing!')
+        print('\n\nThanks for playing!')
 
 if __name__ == '__main__':
     width = input('Please specify the width of your game of life: ')
     height = input('Please specify the height of your game of life: ')
-    print(f'The size of your game of life is {width} x {height}.')
-    print(f'Press Ctrl + c to end game. Enjoy')
-    time.sleep(1)
 
     if not width:
-        width = 3
+        print("You haven't specify the width. Running default value of 30.")
+        width = 30
     if not height:
-        height = 3
+        print("You haven't specify the height. Running default value of 15.")
+        height = 15
 
+    print(f'The size of your game of life is {width} x {height}.')
     run(random_state(int(width), int(height)))
