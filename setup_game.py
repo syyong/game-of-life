@@ -54,7 +54,7 @@ def render(state):
 
 def next_board_state(current_state):
     """
-    :param current_state:
+    :param current_state: a matrix of cell states
     :return: next_board_state: a matrix of cell states
     """
     height = len(current_state)
@@ -150,6 +150,10 @@ def next_board_state(current_state):
 
 
 def load_board_state(file_name):
+    """
+    :param file_name: str 
+    :return: board_state: a matrix of cell states
+    """
     with open(file_name, 'r') as src:
         board_state = [
             [int(i) for i in line.strip()]
@@ -159,6 +163,9 @@ def load_board_state(file_name):
 
 
 def run(current_state):
+    """
+    :param current_state: a matrix of cell states
+    """
     try:
         while True:
             render(current_state)
@@ -170,7 +177,8 @@ def run(current_state):
 if __name__ == '__main__':
     width = input('Please specify the width of your game of life: ')
     height = input('Please specify the height of your game of life: ')
-    print(f'The size of your game of life is {width} x {height}. Enjoy')
+    print(f'The size of your game of life is {width} x {height}.')
+    print(f'Press Ctrl + c to end game. Enjoy')
     time.sleep(1)
 
     if not width:
@@ -178,6 +186,4 @@ if __name__ == '__main__':
     if not height:
         height = 3
 
-    current_state = random_state(int(width), int(height))
-
-    run(current_state)
+    run(random_state(int(width), int(height)))
